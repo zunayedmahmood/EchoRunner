@@ -1,0 +1,6 @@
+{"t": 0.0, "type": "session_start", "session_id": "session_212"}
+{"t": 0.658, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.659, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "SETTINGS"}
+{"t": 0.0, "type": "session_start", "session_id": "session_212"}
+{"t": 0.663, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.664, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "SETTINGS"}

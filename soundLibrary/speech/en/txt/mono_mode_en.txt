@@ -1,0 +1,1 @@
+Mono mode is on. The game will use speech, pitch, and rhythm instead of left and right panning.

@@ -1,0 +1,1 @@
+Main menu. Use up and down to choose. Press Enter to select. Press R to repeat. The first option is Start Tutorial.

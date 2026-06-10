@@ -1,0 +1,1 @@
+Sound Maze. Use arrow keys or S D F J to move. Press scan to hear nearby routes. Press enter to start tutorial.

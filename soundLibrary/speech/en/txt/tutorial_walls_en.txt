@@ -1,0 +1,1 @@
+Tutorial one. Hear walls. Move with arrow keys or W A S D. A soft step means you moved. A knock means wall. Try moving right now.

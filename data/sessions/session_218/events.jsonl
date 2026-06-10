@@ -1,0 +1,3 @@
+{"t": 0.0, "type": "session_start", "session_id": "session_218"}
+{"t": 0.65, "type": "state_transition", "from_state": "BOOT", "to_state": "MAIN_MENU"}
+{"t": 0.651, "type": "state_transition", "from_state": "MAIN_MENU", "to_state": "SETTINGS"}

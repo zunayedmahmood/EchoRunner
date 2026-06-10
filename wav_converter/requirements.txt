@@ -1,0 +1,5 @@
+elevenlabs
+python-dotenv
+pydub
+tqdm
+audioop-lts; python_version >= '3.13'

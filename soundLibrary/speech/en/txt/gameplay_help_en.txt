@@ -1,0 +1,1 @@
+You are playing EchoRunner. Collect all echo orbs. Avoid enemies. Space scans nearby choices. Red danger means change direction now. Resonance cores make enemies vulnerable for a short time. Press R to repeat this help, or Escape to pause.

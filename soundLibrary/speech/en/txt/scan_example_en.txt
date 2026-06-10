@@ -1,0 +1,1 @@
+Left has pellets. Forward has danger far. Right is blocked. Back returns to the safe loop.

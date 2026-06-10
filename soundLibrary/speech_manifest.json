@@ -1,0 +1,328 @@
+{
+  "project": "EchoRunner",
+  "version": "1.0.0",
+  "speech_assets": [
+    {
+      "id": "first_launch_en",
+      "language": "en",
+      "text": "Welcome to EchoRunner. This game is played by listening. Use arrow keys or W A S D to move. Press Enter to choose. Press Space to scan. Press R to repeat. Press H for help. For best results, use headphones. The first option is Start Tutorial.",
+      "path": "soundLibrary/speech/en/wav/first_launch_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "game_goal_en",
+      "language": "en",
+      "text": "Your goal is to collect every echo orb in the maze, avoid enemies, use resonance cores to reverse danger for a short time, and clear the level by learning the maze through sound.",
+      "path": "soundLibrary/speech/en/wav/game_goal_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "controls_full_en",
+      "language": "en",
+      "text": "Controls. Arrow keys or W A S D move. Enter selects. Escape goes back or pauses. Space scans. Shift Space gives a deeper scan. R repeats speech. H gives help. F two starts audio calibration. F three changes cue detail. F nine toggles trainer view.",
+      "path": "soundLibrary/speech/en/wav/controls_full_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "main_menu_intro_en",
+      "language": "en",
+      "text": "Main menu. Use up and down to choose. Press Enter to select. Press R to repeat. The first option is Start Tutorial.",
+      "path": "soundLibrary/speech/en/wav/main_menu_intro_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "audio_calibration_intro_en",
+      "language": "en",
+      "text": "Audio calibration. You will hear left, center, and right. If the direction sounds wrong, use mono mode or check your headphones.",
+      "path": "soundLibrary/speech/en/wav/audio_calibration_intro_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "headphone_confirm_en",
+      "language": "en",
+      "text": "Did the directions sound correct? Press Enter for yes. Press Space to repeat. Press M for mono mode.",
+      "path": "soundLibrary/speech/en/wav/headphone_confirm_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_intro_en",
+      "language": "en",
+      "text": "Start Tutorial. EchoRunner will teach one sound at a time. You can repeat instructions with R. You can pause with Escape. There is no penalty in tutorial.",
+      "path": "soundLibrary/speech/en/wav/tutorial_intro_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_walls_en",
+      "language": "en",
+      "text": "Tutorial one. Hear walls. Move with arrow keys or W A S D. A soft step means you moved. A knock means wall. Try moving right now.",
+      "path": "soundLibrary/speech/en/wav/tutorial_walls_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_junctions_en",
+      "language": "en",
+      "text": "Tutorial two. Junctions. A junction is a place where paths split. When a path opens, you will hear a direction cue. You can press a turn early.",
+      "path": "soundLibrary/speech/en/wav/tutorial_junctions_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_orbs_en",
+      "language": "en",
+      "text": "Tutorial three. Echo orbs. Collect every orb. Each orb makes a light tick. When a route is cleared, you will hear a brighter sound.",
+      "path": "soundLibrary/speech/en/wav/tutorial_orbs_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_scan_en",
+      "language": "en",
+      "text": "Tutorial four. Scan. Press Space for a short scan. Scan tells you useful choices, such as pellets left, danger forward, or wall right.",
+      "path": "soundLibrary/speech/en/wav/tutorial_scan_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_enemy_en",
+      "language": "en",
+      "text": "Tutorial five. Enemy danger. Green means an enemy is nearby. Amber means danger soon. Red means turn, escape, or use power now.",
+      "path": "soundLibrary/speech/en/wav/tutorial_enemy_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_power_en",
+      "language": "en",
+      "text": "Tutorial six. Resonance core. A resonance core turns danger around for a short time. Listen for the countdown before power ends.",
+      "path": "soundLibrary/speech/en/wav/tutorial_power_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_real_level_en",
+      "language": "en",
+      "text": "Final tutorial. Use movement, scan, echo orbs, enemy warnings, and resonance cores together. Press H for help at any time.",
+      "path": "soundLibrary/speech/en/wav/tutorial_real_level_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "gameplay_help_en",
+      "language": "en",
+      "text": "You are playing EchoRunner. Collect all echo orbs. Avoid enemies. Space scans nearby choices. Red danger means change direction now. Resonance cores make enemies vulnerable for a short time. Press R to repeat this help, or Escape to pause.",
+      "path": "soundLibrary/speech/en/wav/gameplay_help_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "scan_help_en",
+      "language": "en",
+      "text": "Scan tells you useful choices, not every tile. Listen for paths, pellets, danger, power, and safe routes.",
+      "path": "soundLibrary/speech/en/wav/scan_help_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "scan_example_en",
+      "language": "en",
+      "text": "Left has pellets. Forward has danger far. Right is blocked. Back returns to the safe loop.",
+      "path": "soundLibrary/speech/en/wav/scan_example_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "pause_menu_en",
+      "language": "en",
+      "text": "Paused. Options are Resume, Repeat goal, Repeat controls, Audio calibration, Cue detail, Restart level, and Quit to main menu. Use Up and Down, then Enter.",
+      "path": "soundLibrary/speech/en/wav/pause_menu_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "death_hunter_left_en",
+      "language": "en",
+      "text": "Hunter caught you from the left corridor. You had a safe turn behind you.",
+      "path": "soundLibrary/speech/en/wav/death_hunter_left_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "death_ambusher_tip_en",
+      "language": "en",
+      "text": "Ambusher reached the junction before you. Try scanning before entering the center path.",
+      "path": "soundLibrary/speech/en/wav/death_ambusher_tip_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "death_power_ended_en",
+      "language": "en",
+      "text": "Power ended before you touched the enemy. Listen for the countdown and turn away when danger returns.",
+      "path": "soundLibrary/speech/en/wav/death_power_ended_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "level_clear_en",
+      "language": "en",
+      "text": "Level clear. You collected all echo orbs. Listen to your score and next level preview.",
+      "path": "soundLibrary/speech/en/wav/level_clear_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "low_stress_mode_en",
+      "language": "en",
+      "text": "Low stress mode reduces enemy speed, extends warnings, and avoids sudden loud sounds. You can turn it on or off from settings.",
+      "path": "soundLibrary/speech/en/wav/low_stress_mode_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "mono_mode_en",
+      "language": "en",
+      "text": "Mono mode is on. The game will use speech, pitch, and rhythm instead of left and right panning.",
+      "path": "soundLibrary/speech/en/wav/mono_mode_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "settings_cue_density_en",
+      "language": "en",
+      "text": "Cue detail changes how much the game speaks and how many navigation cues you hear. Beginner gives more help. Expert gives less speech.",
+      "path": "soundLibrary/speech/en/wav/settings_cue_density_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "trainer_mode_en",
+      "language": "en",
+      "text": "Trainer view is for a coach or researcher. The game remains fully playable by sound.",
+      "path": "soundLibrary/speech/en/wav/trainer_mode_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "study_mode_intro_en",
+      "language": "en",
+      "text": "Study mode records local gameplay telemetry for research. Use participant IDs, not real names. Ask for consent before recording.",
+      "path": "soundLibrary/speech/en/wav/study_mode_intro_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "quit_goodbye_en",
+      "language": "en",
+      "text": "Goodbye from EchoRunner. Settings saved.",
+      "path": "soundLibrary/speech/en/wav/quit_goodbye_en.wav",
+      "category": "speech"
+    },
+    {
+      "id": "first_launch_bn",
+      "language": "bn",
+      "text": "ইকো রানারে স্বাগতম। এই গেমটি শুনে খেলা হয়। চলার জন্য অ্যারো কী বা ডাব্লিউ এ এস ডি ব্যবহার করুন। নির্বাচন করতে এন্টার চাপুন। স্ক্যান করতে স্পেস চাপুন। আবার শুনতে আর চাপুন। সাহায্যের জন্য এইচ চাপুন। হেডফোন ব্যবহার করলে ভালো হবে। প্রথম অপশন হলো টিউটোরিয়াল শুরু।",
+      "path": "soundLibrary/speech/bn/wav/first_launch_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "game_goal_bn",
+      "language": "bn",
+      "text": "আপনার লক্ষ্য হলো মেইজের সব ইকো অরব সংগ্রহ করা, শত্রুদের এড়ানো, রেজোনেন্স কোর ব্যবহার করে অল্প সময়ের জন্য বিপদ উল্টে দেওয়া, এবং শব্দ শুনে মেইজ শিখে লেভেল শেষ করা।",
+      "path": "soundLibrary/speech/bn/wav/game_goal_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "controls_full_bn",
+      "language": "bn",
+      "text": "কন্ট্রোল। অ্যারো কী অথবা ডাব্লিউ এ এস ডি দিয়ে চলুন। এন্টার নির্বাচন করে। এস্কেপ পিছনে যায় বা পজ করে। স্পেস স্ক্যান করে। আর চাপলে শেষ কথা আবার শুনবেন। এইচ চাপলে সাহায্য পাবেন।",
+      "path": "soundLibrary/speech/bn/wav/controls_full_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "main_menu_intro_bn",
+      "language": "bn",
+      "text": "মেইন মেনু। উপরে নিচে নির্বাচন করুন। এন্টার চাপুন। আর চাপলে আবার শুনবেন। প্রথম অপশন টিউটোরিয়াল শুরু।",
+      "path": "soundLibrary/speech/bn/wav/main_menu_intro_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "audio_calibration_intro_bn",
+      "language": "bn",
+      "text": "অডিও ক্যালিব্রেশন। আপনি বাম, মাঝখান, এবং ডান দিকের শব্দ শুনবেন। দিক ভুল লাগলে মোনো মোড ব্যবহার করুন অথবা হেডফোন পরীক্ষা করুন।",
+      "path": "soundLibrary/speech/bn/wav/audio_calibration_intro_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "headphone_confirm_bn",
+      "language": "bn",
+      "text": "দিকগুলো কি ঠিক শোনাচ্ছে? হ্যাঁ হলে এন্টার চাপুন। আবার শুনতে স্পেস চাপুন। মোনো মোডের জন্য এম চাপুন।",
+      "path": "soundLibrary/speech/bn/wav/headphone_confirm_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_intro_bn",
+      "language": "bn",
+      "text": "টিউটোরিয়াল শুরু। ইকো রানার একবারে একটি শব্দ শেখাবে। আর চাপলে নির্দেশনা আবার শুনবেন। এস্কেপ চাপলে পজ হবে। টিউটোরিয়ালে কোনো পেনাল্টি নেই।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_intro_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_walls_bn",
+      "language": "bn",
+      "text": "টিউটোরিয়াল এক। দেয়ালের শব্দ শুনুন। অ্যারো কী বা ডাব্লিউ এ এস ডি দিয়ে চলুন। নরম স্টেপ মানে আপনি চলেছেন। নক শব্দ মানে দেয়াল। এখন ডান দিকে চলার চেষ্টা করুন।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_walls_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_junctions_bn",
+      "language": "bn",
+      "text": "টিউটোরিয়াল দুই। জাংশন। জাংশন হলো যেখানে পথ ভাগ হয়। পথ খোলা থাকলে আপনি দিকের সংকেত শুনবেন। আপনি একটু আগেই টার্ন চাপতে পারেন।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_junctions_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_orbs_bn",
+      "language": "bn",
+      "text": "টিউটোরিয়াল তিন। ইকো অরব। সব অরব সংগ্রহ করুন। প্রতিটি অরব হালকা টিক শব্দ করবে। একটি রাস্তা পরিষ্কার হলে উজ্জ্বল শব্দ শুনবেন।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_orbs_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_scan_bn",
+      "language": "bn",
+      "text": "টিউটোরিয়াল চার। স্ক্যান। ছোট স্ক্যানের জন্য স্পেস চাপুন। স্ক্যান আপনাকে দরকারি পছন্দ বলে, যেমন বামে অরব, সামনে বিপদ, অথবা ডানে দেয়াল।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_scan_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_enemy_bn",
+      "language": "bn",
+      "text": "টিউটোরিয়াল পাঁচ। শত্রুর বিপদ। গ্রিন মানে শত্রু কাছে। অ্যাম্বার মানে শিগগির বিপদ। রেড মানে এখনই ঘুরুন, পালান, অথবা পাওয়ার ব্যবহার করুন।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_enemy_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_power_bn",
+      "language": "bn",
+      "text": "টিউটোরিয়াল ছয়। রেজোনেন্স কোর। রেজোনেন্স কোর অল্প সময়ের জন্য বিপদ উল্টে দেয়। পাওয়ার শেষ হওয়ার আগে কাউন্টডাউন শুনুন।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_power_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "tutorial_real_level_bn",
+      "language": "bn",
+      "text": "শেষ টিউটোরিয়াল। চলা, স্ক্যান, ইকো অরব, শত্রুর সতর্কতা, এবং রেজোনেন্স কোর একসাথে ব্যবহার করুন। যে কোনো সময় সাহায্যের জন্য এইচ চাপুন।",
+      "path": "soundLibrary/speech/bn/wav/tutorial_real_level_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "gameplay_help_bn",
+      "language": "bn",
+      "text": "আপনি ইকো রানার খেলছেন। সব ইকো অরব সংগ্রহ করুন। শত্রু এড়িয়ে চলুন। স্পেস কাছের পথ স্ক্যান করে। রেড বিপদ মানে এখনই দিক বদলান। রেজোনেন্স কোর অল্প সময়ের জন্য শত্রুকে দুর্বল করে।",
+      "path": "soundLibrary/speech/bn/wav/gameplay_help_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "pause_menu_bn",
+      "language": "bn",
+      "text": "পজ হয়েছে। অপশন হলো রিজিউম, লক্ষ্য আবার শুনুন, কন্ট্রোল আবার শুনুন, অডিও ক্যালিব্রেশন, কিউ ডিটেইল, লেভেল আবার শুরু, এবং মেইন মেনুতে ফিরে যান।",
+      "path": "soundLibrary/speech/bn/wav/pause_menu_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "level_clear_bn",
+      "language": "bn",
+      "text": "লেভেল শেষ। আপনি সব ইকো অরব সংগ্রহ করেছেন। এখন স্কোর এবং পরের লেভেলের কথা শুনুন।",
+      "path": "soundLibrary/speech/bn/wav/level_clear_bn.wav",
+      "category": "speech"
+    },
+    {
+      "id": "quit_goodbye_bn",
+      "language": "bn",
+      "text": "ইকো রানার থেকে বিদায়। সেটিংস সংরক্ষণ করা হয়েছে।",
+      "path": "soundLibrary/speech/bn/wav/quit_goodbye_bn.wav",
+      "category": "speech"
+    }
+  ]
+}

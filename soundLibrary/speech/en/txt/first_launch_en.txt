@@ -1,0 +1,1 @@
+Welcome to EchoRunner. This game is played by listening. Use arrow keys or W A S D to move. Press Enter to choose. Press Space to scan. Press R to repeat. Press H for help. For best results, use headphones. The first option is Start Tutorial.

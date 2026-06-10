@@ -1,0 +1,1 @@
+High contrast mode adjusts the companion window display for low-vision trainers.

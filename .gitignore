@@ -1,0 +1,80 @@
+# ==========================================
+# EchoRunner Git Ignore Configuration
+# ==========================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# --- Virtual Environments ---
+.venv/
+venv/
+ENV/
+env/
+wav_converter/.venv/
+
+# --- Build & Distribution ---
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# --- OS Metadata ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- Environment Configuration ---
+.env
+wav_converter/.env
+
+# --- Test Results & Coverage (Excluded as requested) ---
+.pytest_cache/
+.benchmarks/
+.coverage
+.coverage.*
+.hypothesis/
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
+nosetests.xml
+junit-*.xml
+report.xml
+report.html
+test-results/
+test_results/
+logs/
+
+# --- Zips / Archive Inclusion (Included as requested) ---
+# Negating ignore patterns to explicitly ensure .zip files are included
+!*.zip
+!**/*.zip

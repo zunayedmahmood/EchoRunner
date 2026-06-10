@@ -1,0 +1,18 @@
+{"t": 0.0, "type": "session_start", "session_id": "P_3_3"}
+{"t": 0.318, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.0, "type": "session_start", "session_id": "P_3_3"}
+{"t": 0.283, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.284, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "SETTINGS"}
+{"t": 0.0, "type": "session_start", "session_id": "P_3_3"}
+{"t": 0.309, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.31, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "AUDIO_CALIBRATION"}
+{"t": 0.31, "type": "state_transition", "from_state": "AUDIO_CALIBRATION", "to_state": "MAIN_MENU"}
+{"t": 0.0, "type": "session_start", "session_id": "P_3_3"}
+{"t": 0.284, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.284, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "AUDIO_CALIBRATION"}
+{"t": 0.284, "type": "state_transition", "from_state": "AUDIO_CALIBRATION", "to_state": "MAIN_MENU"}
+{"t": 0.0, "type": "session_start", "session_id": "P_3_3"}
+{"t": 0.293, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.293, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "SETTINGS"}
+{"t": 0.0, "type": "session_start", "session_id": "P_3_3"}
+{"t": 0.262, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}

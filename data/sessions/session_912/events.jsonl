@@ -1,0 +1,4 @@
+{"t": 0.0, "type": "session_start", "session_id": "session_912"}
+{"t": 0.14, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
+{"t": 0.14, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "AUDIO_CALIBRATION"}
+{"t": 0.14, "type": "state_transition", "from_state": "AUDIO_CALIBRATION", "to_state": "MAIN_MENU"}

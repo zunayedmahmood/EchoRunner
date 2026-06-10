@@ -1,0 +1,1 @@
+left fruit, up pellets, right enemy far, down wall

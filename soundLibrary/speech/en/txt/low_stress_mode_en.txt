@@ -1,0 +1,1 @@
+Low stress mode reduces enemy speed, extends warnings, and avoids sudden loud sounds. You can turn it on or off from settings.

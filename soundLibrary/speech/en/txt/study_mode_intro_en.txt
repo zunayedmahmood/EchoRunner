@@ -1,0 +1,1 @@
+Study mode records local gameplay telemetry for research. Use participant IDs, not real names. Ask for consent before recording.

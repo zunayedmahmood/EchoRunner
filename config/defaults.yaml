@@ -1,0 +1,21 @@
+project_name: EchoRunner
+audio:
+  backend: openal
+  cue_density: beginner
+  speech_language: en
+  speech_speed: normal
+  headphones_mode: true
+  mono_mode: false
+  sudden_sound_reduction: false
+  music_volume: 0.35
+  speech_volume: 0.7
+  sfx_volume: 0.8
+gameplay:
+  low_stress_mode: false
+  movement_speed_tiles_per_second: 3.0
+  starting_lives: 3
+trainer_view:
+  enabled: true
+telemetry:
+  enabled: true
+  anonymize_by_default: true

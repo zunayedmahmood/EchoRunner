@@ -1,0 +1,51 @@
+{
+  "level_id": "level_03_power_route",
+  "name": "Power Route",
+  "lesson": "risk/reward and power countdown",
+  "difficulty": 3,
+  "grid": [
+    "##############",
+    "#P...#.......#",
+    "#.##.#.#####.#",
+    "#....J...o...#",
+    "####.#.###.#E#",
+    "#R...#.....J.#",
+    "##############"
+  ],
+  "legend": {
+    "#": "wall",
+    ".": "echo_orb",
+    "P": "player_start",
+    "E": "enemy_ambusher_start",
+    "J": "junction",
+    "o": "resonance_core",
+    "R": "safe_reorient"
+  },
+  "audio_landmarks": [
+    {
+      "id": "enemy_gate",
+      "position": [
+        12,
+        4
+      ],
+      "cue": "landmark_enemy_gate"
+    }
+  ],
+  "enemy_rules": [
+    {
+      "id": "ambusher_01",
+      "archetype": "ambusher",
+      "speed": 2.4,
+      "start": [
+        12,
+        4
+      ],
+      "state": "patrol"
+    }
+  ],
+  "cue_density_default": "standard",
+  "fairness_notes": [
+    "power route has warning landmark",
+    "countdown mandatory"
+  ]
+}

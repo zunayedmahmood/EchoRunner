@@ -1,0 +1,52 @@
+{
+  "level_id": "level_01_training_loop",
+  "name": "Training Loop",
+  "lesson": "movement, walls, pellets, one safe enemy",
+  "difficulty": 1,
+  "grid": [
+    "##########",
+    "#P..J...E#",
+    "#.#.##.#.#",
+    "#..o..R..#",
+    "#.#.##.#.#",
+    "#...J....#",
+    "##########"
+  ],
+  "legend": {
+    "#": "wall",
+    ".": "echo_orb",
+    "P": "player_start",
+    "E": "enemy_hunter_start",
+    "J": "junction",
+    "o": "resonance_core",
+    "R": "safe_reorient"
+  },
+  "audio_landmarks": [
+    {
+      "id": "safe_loop",
+      "position": [
+        6,
+        3
+      ],
+      "cue": "landmark_safe_loop"
+    }
+  ],
+  "enemy_rules": [
+    {
+      "id": "hunter_01",
+      "archetype": "hunter",
+      "speed": 2.0,
+      "start": [
+        8,
+        1
+      ],
+      "state": "patrol"
+    }
+  ],
+  "cue_density_default": "beginner",
+  "fairness_notes": [
+    "single enemy",
+    "long warning windows",
+    "no dead ends"
+  ]
+}

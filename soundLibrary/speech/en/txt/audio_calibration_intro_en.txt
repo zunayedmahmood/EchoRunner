@@ -1,0 +1,1 @@
+Audio calibration. You will hear left, center, and right. If the direction sounds wrong, use mono mode or check your headphones.

@@ -1,0 +1,19 @@
+[project]
+name = "echorunner"
+version = "0.1.0"
+description = "Blind-first Python/Pygame sound-maze game with OpenAL spatial audio"
+requires-python = ">=3.11"
+dependencies = [
+    "pygame-ce>=2.5.0",
+    "numpy>=1.26",
+    "PyYAML>=6.0",
+    "pydantic>=2.7",
+    "rich>=13.7",
+]
+
+[project.scripts]
+echorunner = "echorunner.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

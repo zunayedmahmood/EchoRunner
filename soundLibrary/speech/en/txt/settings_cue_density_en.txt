@@ -1,0 +1,1 @@
+Cue detail changes how much the game speaks and how many navigation cues you hear. Beginner gives more help. Expert gives less speech.

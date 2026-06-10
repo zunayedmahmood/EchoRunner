@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sound Maze Replay Schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "level_id",
+    "rng_seed",
+    "events",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "game_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "participant_id": {
+      "type": "string"
+    },
+    "level_id": {
+      "type": "string"
+    },
+    "rng_seed": {
+      "type": "integer"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    }
+  }
+}

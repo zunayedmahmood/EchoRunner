@@ -1,0 +1,1 @@
+Scan tells you useful choices, not every tile. Listen for paths, pellets, danger, power, and safe routes.

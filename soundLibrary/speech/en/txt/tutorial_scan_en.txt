@@ -1,0 +1,1 @@
+Tutorial four. Scan. Press Space for a short scan. Scan tells you useful choices, such as pellets left, danger forward, or wall right.

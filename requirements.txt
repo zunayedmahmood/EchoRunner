@@ -1,0 +1,9 @@
+pygame-ce>=2.5.0
+numpy>=1.26
+PyYAML>=6.0
+pydantic>=2.7
+rich>=13.7
+pytest>=8.0
+pytest-cov>=5.0
+platformdirs>=4.2
+pyinstaller>=6.0

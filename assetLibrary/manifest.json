@@ -1,0 +1,329 @@
+{
+  "project": "EchoRunner",
+  "assets": [
+    {
+      "id": "sprite_sheet_64",
+      "path": "assetLibrary/atlases/sprite_sheet_64.png",
+      "category": "assetLibrary",
+      "format": "png"
+    },
+    {
+      "id": "tile_atlas_32",
+      "path": "assetLibrary/atlases/tile_atlas_32.png",
+      "category": "assetLibrary",
+      "format": "png"
+    },
+    {
+      "id": "background_sonar_grid",
+      "path": "assetLibrary/backgrounds/svg/background_sonar_grid.svg",
+      "category": "backgrounds",
+      "format": "svg"
+    },
+    {
+      "id": "enemy_ambusher",
+      "path": "assetLibrary/sprites/png/enemy_ambusher.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "enemy_coward",
+      "path": "assetLibrary/sprites/png/enemy_coward.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "enemy_hunter",
+      "path": "assetLibrary/sprites/png/enemy_hunter.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "enemy_trickster",
+      "path": "assetLibrary/sprites/png/enemy_trickster.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "fruit_signal_gem",
+      "path": "assetLibrary/sprites/png/fruit_signal_gem.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "life_token",
+      "path": "assetLibrary/sprites/png/life_token.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "pellet_echo_orb",
+      "path": "assetLibrary/sprites/png/pellet_echo_orb.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "player_echo_runner",
+      "path": "assetLibrary/sprites/png/player_echo_runner.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "power_resonance_core",
+      "path": "assetLibrary/sprites/png/power_resonance_core.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "scan_pulse",
+      "path": "assetLibrary/sprites/png/scan_pulse.png",
+      "category": "sprites",
+      "format": "png"
+    },
+    {
+      "id": "enemy_ambusher",
+      "path": "assetLibrary/sprites/svg/enemy_ambusher.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "enemy_coward",
+      "path": "assetLibrary/sprites/svg/enemy_coward.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "enemy_hunter",
+      "path": "assetLibrary/sprites/svg/enemy_hunter.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "enemy_trickster",
+      "path": "assetLibrary/sprites/svg/enemy_trickster.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "fruit_signal_gem",
+      "path": "assetLibrary/sprites/svg/fruit_signal_gem.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "life_token",
+      "path": "assetLibrary/sprites/svg/life_token.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "pellet_echo_orb",
+      "path": "assetLibrary/sprites/svg/pellet_echo_orb.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "player_echo_runner",
+      "path": "assetLibrary/sprites/svg/player_echo_runner.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "power_resonance_core",
+      "path": "assetLibrary/sprites/svg/power_resonance_core.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "scan_pulse",
+      "path": "assetLibrary/sprites/svg/scan_pulse.svg",
+      "category": "sprites",
+      "format": "svg"
+    },
+    {
+      "id": "tile_corridor",
+      "path": "assetLibrary/tiles/png/tile_corridor.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_enemy_gate",
+      "path": "assetLibrary/tiles/png/tile_enemy_gate.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_fruit_route",
+      "path": "assetLibrary/tiles/png/tile_fruit_route.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_junction",
+      "path": "assetLibrary/tiles/png/tile_junction.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_pellet",
+      "path": "assetLibrary/tiles/png/tile_pellet.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_power",
+      "path": "assetLibrary/tiles/png/tile_power.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_safe_pocket",
+      "path": "assetLibrary/tiles/png/tile_safe_pocket.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_unknown",
+      "path": "assetLibrary/tiles/png/tile_unknown.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_wall",
+      "path": "assetLibrary/tiles/png/tile_wall.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_warp",
+      "path": "assetLibrary/tiles/png/tile_warp.png",
+      "category": "tiles",
+      "format": "png"
+    },
+    {
+      "id": "tile_corridor",
+      "path": "assetLibrary/tiles/svg/tile_corridor.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_enemy_gate",
+      "path": "assetLibrary/tiles/svg/tile_enemy_gate.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_fruit_route",
+      "path": "assetLibrary/tiles/svg/tile_fruit_route.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_junction",
+      "path": "assetLibrary/tiles/svg/tile_junction.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_pellet",
+      "path": "assetLibrary/tiles/svg/tile_pellet.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_power",
+      "path": "assetLibrary/tiles/svg/tile_power.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_safe_pocket",
+      "path": "assetLibrary/tiles/svg/tile_safe_pocket.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_unknown",
+      "path": "assetLibrary/tiles/svg/tile_unknown.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_wall",
+      "path": "assetLibrary/tiles/svg/tile_wall.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "tile_warp",
+      "path": "assetLibrary/tiles/svg/tile_warp.svg",
+      "category": "tiles",
+      "format": "svg"
+    },
+    {
+      "id": "echorunner_logo",
+      "path": "assetLibrary/title/echorunner_logo.svg",
+      "category": "assetLibrary",
+      "format": "svg"
+    },
+    {
+      "id": "icon_danger",
+      "path": "assetLibrary/ui/svg/icon_danger.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_headphones",
+      "path": "assetLibrary/ui/svg/icon_headphones.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_keyboard",
+      "path": "assetLibrary/ui/svg/icon_keyboard.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_mono",
+      "path": "assetLibrary/ui/svg/icon_mono.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_repeat",
+      "path": "assetLibrary/ui/svg/icon_repeat.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_replay",
+      "path": "assetLibrary/ui/svg/icon_replay.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_research",
+      "path": "assetLibrary/ui/svg/icon_research.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_scan",
+      "path": "assetLibrary/ui/svg/icon_scan.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_trainer",
+      "path": "assetLibrary/ui/svg/icon_trainer.svg",
+      "category": "ui",
+      "format": "svg"
+    },
+    {
+      "id": "icon_volume",
+      "path": "assetLibrary/ui/svg/icon_volume.svg",
+      "category": "ui",
+      "format": "svg"
+    }
+  ]
+}

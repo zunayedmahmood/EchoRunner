@@ -1,0 +1,1 @@
+Start Tutorial. EchoRunner will teach one sound at a time. You can repeat instructions with R. You can pause with Escape. There is no penalty in tutorial.

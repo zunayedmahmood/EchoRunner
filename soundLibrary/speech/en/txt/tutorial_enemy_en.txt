@@ -1,0 +1,1 @@
+Tutorial five. Enemy danger. Green means an enemy is nearby. Amber means danger soon. Red means turn, escape, or use power now.

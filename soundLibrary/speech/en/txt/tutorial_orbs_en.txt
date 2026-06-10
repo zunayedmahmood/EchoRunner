@@ -1,0 +1,1 @@
+Tutorial three. Echo orbs. Collect every orb. Each orb makes a light tick. When a route is cleared, you will hear a brighter sound.

@@ -1,0 +1,1 @@
+Controls. Arrow keys or W A S D move. Enter selects. Escape goes back or pauses. Space scans. Shift Space gives a deeper scan. R repeats speech. H gives help. F two starts audio calibration. F three changes cue detail. F nine toggles trainer view.

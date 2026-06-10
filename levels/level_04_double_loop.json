@@ -1,0 +1,59 @@
+{
+  "level_id": "level_04_double_loop",
+  "name": "Double Loop",
+  "lesson": "escape routing between two loops",
+  "difficulty": 4,
+  "grid": [
+    "################",
+    "#P....J....#...#",
+    "#.####.##..#.#.#",
+    "#.#..o..#..J.#E#",
+    "#.#.##..#..#.#.#",
+    "#R...J.....#...#",
+    "################"
+  ],
+  "legend": {
+    "#": "wall",
+    ".": "echo_orb",
+    "P": "player_start",
+    "E": "enemy_trickster_start",
+    "J": "junction",
+    "o": "resonance_core",
+    "R": "safe_reorient"
+  },
+  "audio_landmarks": [
+    {
+      "id": "safe_loop",
+      "position": [
+        1,
+        5
+      ],
+      "cue": "landmark_safe_loop"
+    },
+    {
+      "id": "enemy_gate",
+      "position": [
+        14,
+        3
+      ],
+      "cue": "landmark_enemy_gate"
+    }
+  ],
+  "enemy_rules": [
+    {
+      "id": "trickster_01",
+      "archetype": "trickster",
+      "speed": 2.5,
+      "start": [
+        14,
+        3
+      ],
+      "state": "patrol"
+    }
+  ],
+  "cue_density_default": "standard",
+  "fairness_notes": [
+    "two loop escape routes",
+    "trickster never starts in red range"
+  ]
+}

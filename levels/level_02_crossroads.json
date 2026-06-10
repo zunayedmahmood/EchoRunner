@@ -1,0 +1,52 @@
+{
+  "level_id": "level_02_crossroads",
+  "name": "Crossroads",
+  "lesson": "central hub, scan choices, route planning",
+  "difficulty": 2,
+  "grid": [
+    "############",
+    "#P....#...G#",
+    "#.##..#..#.#",
+    "#..J..o..J.#",
+    "#.##..#..#.#",
+    "#E....#...R#",
+    "############"
+  ],
+  "legend": {
+    "#": "wall",
+    ".": "echo_orb",
+    "P": "player_start",
+    "E": "enemy_hunter_start",
+    "J": "junction",
+    "o": "resonance_core",
+    "R": "safe_reorient",
+    "G": "signal_gem"
+  },
+  "audio_landmarks": [
+    {
+      "id": "fruit_corridor",
+      "position": [
+        10,
+        1
+      ],
+      "cue": "landmark_fruit_corridor"
+    }
+  ],
+  "enemy_rules": [
+    {
+      "id": "hunter_01",
+      "archetype": "hunter",
+      "speed": 2.2,
+      "start": [
+        1,
+        5
+      ],
+      "state": "patrol"
+    }
+  ],
+  "cue_density_default": "standard",
+  "fairness_notes": [
+    "central hub scan required",
+    "signal gem route is optional"
+  ]
+}

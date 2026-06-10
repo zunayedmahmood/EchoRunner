@@ -1,0 +1,1 @@
+Paused. Options are Resume, Repeat goal, Repeat controls, Audio calibration, Cue detail, Restart level, and Quit to main menu. Use Up and Down, then Enter.

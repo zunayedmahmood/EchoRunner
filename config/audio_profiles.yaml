@@ -1,0 +1,17 @@
+profiles:
+  beginner:
+    speech_detail: high
+    movement_ticks: true
+    warning_window_seconds: 3.0
+  standard:
+    speech_detail: medium
+    movement_ticks: partial
+    warning_window_seconds: 2.2
+  expert:
+    speech_detail: low
+    movement_ticks: false
+    warning_window_seconds: 1.8
+  mono:
+    spatial_panning: false
+    use_direction_speech: true
+    rhythm_direction_codes: true
