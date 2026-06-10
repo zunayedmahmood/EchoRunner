@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
+cd "$(dirname "$0")/.."
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+python -m pip install --no-build-isolation -e .
+echo "EchoRunner environment ready. Run: python -m echorunner"

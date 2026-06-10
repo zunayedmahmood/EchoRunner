@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620" role="img" aria-labelledby="title desc">
+<title id="title">Spatial Audio Pipeline</title>
+<desc id="desc">OpenAL turns game events into directional, distance-aware information for blind-first play</desc>
+<defs>
+<linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#061427"/><stop offset="1" stop-color="#0f2744"/></linearGradient>
+<linearGradient id="card" x1="0" x2="1"><stop offset="0" stop-color="#132f52"/><stop offset="1" stop-color="#17476f"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000" flood-opacity="0.28"/></filter>
+<marker id="arrow" markerWidth="11" markerHeight="11" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#78dce8"/></marker>
+</defs>
+<rect width="100%" height="100%" rx="28" fill="url(#bg)"/>
+<text x="50" y="70" fill="#ffffff" font-size="36" font-family="Inter, Segoe UI, Arial" font-weight="800">Spatial Audio Pipeline</text>
+<text x="50" y="105" fill="#b9d8ff" font-size="18" font-family="Inter, Segoe UI, Arial">OpenAL turns game events into directional, distance-aware information for blind-first play</text>
+<path d="M270,235.0 C300.0,235.0 300.0,235.0 330,235.0" fill="none" stroke="#78dce8" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M545,235.0 C577.5,235.0 577.5,235.0 610,235.0" fill="none" stroke="#78dce8" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M825,235.0 C857.5,235.0 857.5,235.0 890,235.0" fill="none" stroke="#78dce8" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M545,455.0 C717.5,455.0 717.5,235.0 890,235.0" fill="none" stroke="#78dce8" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M1005.0,295 C861.25,295 861.25,395 717.5,395" fill="none" stroke="#78dce8" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+<path d="M825,455.0 C857.5,455.0 857.5,455.0 890,455.0" fill="none" stroke="#78dce8" stroke-width="4" marker-end="url(#arrow)" opacity="0.9"/>
+<rect x="60" y="175" width="210" height="120" rx="18" fill="url(#card)" stroke="#66e0ff" stroke-opacity="0.55" filter="url(#shadow)"/>
+<text x="82" y="217" fill="#ffffff" font-size="22" font-family="Inter, Segoe UI, Arial" font-weight="800">Game Event</text>
+<text x="82" y="247" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">Enemy near, wall hit, orb pickup, scan</text>
+<text x="82" y="269" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">request</text>
+<rect x="330" y="175" width="215" height="120" rx="18" fill="url(#card)" stroke="#66e0ff" stroke-opacity="0.55" filter="url(#shadow)"/>
+<text x="352" y="217" fill="#ffffff" font-size="22" font-family="Inter, Segoe UI, Arial" font-weight="800">Priority Funnel</text>
+<text x="352" y="247" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">Life/death, threat, navigation, reward,</text>
+<text x="352" y="269" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">ambience</text>
+<rect x="610" y="175" width="215" height="120" rx="18" fill="url(#card)" stroke="#66e0ff" stroke-opacity="0.55" filter="url(#shadow)"/>
+<text x="632" y="217" fill="#ffffff" font-size="22" font-family="Inter, Segoe UI, Arial" font-weight="800">Source Pool</text>
+<text x="632" y="247" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">Reuse moving sources instead of restarting</text>
+<text x="632" y="269" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">every frame</text>
+<rect x="890" y="175" width="230" height="120" rx="18" fill="url(#card)" stroke="#66e0ff" stroke-opacity="0.55" filter="url(#shadow)"/>
+<text x="912" y="217" fill="#ffffff" font-size="22" font-family="Inter, Segoe UI, Arial" font-weight="800">3D Placement</text>
+<text x="912" y="247" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">x/z tile positions, gain, pitch, rolloff</text>
+<rect x="330" y="395" width="215" height="120" rx="18" fill="url(#card)" stroke="#66e0ff" stroke-opacity="0.55" filter="url(#shadow)"/>
+<text x="352" y="437" fill="#ffffff" font-size="22" font-family="Inter, Segoe UI, Arial" font-weight="800">Listener</text>
+<text x="352" y="467" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">Player position plus facing direction</text>
+<rect x="610" y="395" width="215" height="120" rx="18" fill="url(#card)" stroke="#66e0ff" stroke-opacity="0.55" filter="url(#shadow)"/>
+<text x="632" y="437" fill="#ffffff" font-size="22" font-family="Inter, Segoe UI, Arial" font-weight="800">Output Mode</text>
+<text x="632" y="467" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">Headphones by default, mono fallback when</text>
+<text x="632" y="489" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">needed</text>
+<rect x="890" y="395" width="230" height="120" rx="18" fill="url(#card)" stroke="#66e0ff" stroke-opacity="0.55" filter="url(#shadow)"/>
+<text x="912" y="437" fill="#ffffff" font-size="22" font-family="Inter, Segoe UI, Arial" font-weight="800">Silent Fallback</text>
+<text x="912" y="467" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">Tests run safely when no audio device</text>
+<text x="912" y="489" fill="#d9ecff" font-size="15" font-family="Inter, Segoe UI, Arial">exists</text>
+<text x="50" y="585" fill="#7fb3d8" font-size="14" font-family="Inter, Segoe UI, Arial">EchoRunner is sound-first: the visual trainer view mirrors the simulation, but gameplay decisions are carried by audio cues.</text>
+</svg>

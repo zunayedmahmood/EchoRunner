@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import ctypes
+import os
 import sys
 from typing import Optional
 
@@ -29,6 +30,7 @@ AL_INVERSE_DISTANCE_CLAMPED = 0xD002
 AL_NO_ERROR = 0
 
 ALC_DEFAULT_DEVICE_SPECIFIER = 0x1004
+ALC_DEVICE_SPECIFIER = 0x1005
 AL_VENDOR = 0xB001
 AL_VERSION = 0xB002
 AL_RENDERER = 0xB003
@@ -53,6 +55,15 @@ from pathlib import Path
 
 _lib: ctypes.CDLL | None = None
 lib_names: list[str] = []
+
+# Headless fallback state. This is used only when OpenAL Soft is installed but
+# no playback device can be opened, which is common in CI and remote servers.
+_fallback_mode = False
+_FAKE_DEVICE = 1
+_FAKE_CONTEXT = 1
+_next_buffer_id = 1000
+_next_source_id = 2000
+_fake_source_states: dict[int, int] = {}
 
 if sys.platform.startswith("win"):
     lib_names = ["OpenAL32.dll", "soft_oal.dll"]
@@ -198,16 +209,34 @@ if _lib is not None:
 
 
 def open_device(devicename: Optional[str] = None) -> Optional[int]:
-    """Open an OpenAL audio device."""
+    """Open an OpenAL audio device.
+
+    OpenAL Soft may be installed while no real playback device is available
+    (CI, Docker, remote servers, or lab machines without ALSA/Pulse/PipeWire).
+    In that case EchoRunner enters a silent fallback mode: OpenAL calls keep the
+    same lifecycle semantics, tests and telemetry continue to run, but no sound
+    is emitted. Real desktop players still get the real OpenAL device whenever
+    one is available.
+    """
+    global _fallback_mode
     if _lib is None:
         raise RuntimeError("OpenAL Soft library not loaded. Ensure OpenAL is installed.")
     name_bytes = devicename.encode("utf-8") if devicename else None
     device = _lib.alcOpenDevice(name_bytes)
-    return device if device else None
+    if device:
+        _fallback_mode = False
+        return device
+
+    _fallback_mode = True
+    return _FAKE_DEVICE
 
 
 def close_device(device: int) -> bool:
     """Close the specified OpenAL device."""
+    global _fallback_mode
+    if _fallback_mode and device == _FAKE_DEVICE:
+        _fallback_mode = False
+        return True
     if _lib is None:
         return False
     return bool(_lib.alcCloseDevice(device))
@@ -215,6 +244,8 @@ def close_device(device: int) -> bool:
 
 def create_context(device: int) -> Optional[int]:
     """Create an OpenAL context and make it current."""
+    if _fallback_mode and device == _FAKE_DEVICE:
+        return _FAKE_CONTEXT
     if _lib is None:
         return None
     context = _lib.alcCreateContext(device, None)
@@ -226,6 +257,8 @@ def create_context(device: int) -> Optional[int]:
 
 def destroy_context(context: int) -> None:
     """Destroy the specified OpenAL context after making none current."""
+    if _fallback_mode and context == _FAKE_CONTEXT:
+        return
     if _lib is not None:
         _lib.alcMakeContextCurrent(None)
         _lib.alcDestroyContext(context)
@@ -233,6 +266,11 @@ def destroy_context(context: int) -> None:
 
 def gen_buffers(n: int) -> list[int]:
     """Generate n audio buffer names."""
+    global _next_buffer_id
+    if _fallback_mode:
+        ids = list(range(_next_buffer_id, _next_buffer_id + n))
+        _next_buffer_id += n
+        return ids
     if _lib is None:
         return []
     buffers = (ALuint * n)()
@@ -242,6 +280,8 @@ def gen_buffers(n: int) -> list[int]:
 
 def delete_buffers(buffers: list[int]) -> None:
     """Delete a list of audio buffer names."""
+    if _fallback_mode:
+        return
     if _lib is not None and buffers:
         n = len(buffers)
         bufs = (ALuint * n)(*buffers)
@@ -250,7 +290,7 @@ def delete_buffers(buffers: list[int]) -> None:
 
 def buffer_data(buffer: int, format: int, data: bytes, freq: int) -> None:
     """Fill a buffer with audio data."""
-    if _lib is None:
+    if _fallback_mode or _lib is None:
         return
     size = len(data)
     data_p = ctypes.cast(ctypes.create_string_buffer(data, size), ctypes.c_void_p)
@@ -259,6 +299,13 @@ def buffer_data(buffer: int, format: int, data: bytes, freq: int) -> None:
 
 def gen_sources(n: int) -> list[int]:
     """Generate n sound source names."""
+    global _next_source_id
+    if _fallback_mode:
+        ids = list(range(_next_source_id, _next_source_id + n))
+        _next_source_id += n
+        for source_id in ids:
+            _fake_source_states[source_id] = AL_INITIAL
+        return ids
     if _lib is None:
         return []
     sources = (ALuint * n)()
@@ -268,6 +315,10 @@ def gen_sources(n: int) -> list[int]:
 
 def delete_sources(sources: list[int]) -> None:
     """Delete a list of sound source names."""
+    if _fallback_mode:
+        for source_id in sources:
+            _fake_source_states.pop(source_id, None)
+        return
     if _lib is not None and sources:
         n = len(sources)
         srcs = (ALuint * n)(*sources)
@@ -276,48 +327,66 @@ def delete_sources(sources: list[int]) -> None:
 
 def source_play(source: int) -> None:
     """Start playing the source."""
+    if _fallback_mode:
+        _fake_source_states[source] = AL_PLAYING
+        return
     if _lib is not None:
         _lib.alSourcePlay(source)
 
 
 def source_stop(source: int) -> None:
     """Stop playing the source."""
+    if _fallback_mode:
+        _fake_source_states[source] = AL_STOPPED
+        return
     if _lib is not None:
         _lib.alSourceStop(source)
 
 
 def source_set_position(source: int, position: tuple[float, float, float]) -> None:
     """Set the 3D position of a source."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alSource3f(source, AL_POSITION, position[0], position[1], position[2])
 
 
 def source_set_gain(source: int, gain: float) -> None:
     """Set the gain (volume) of a source."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alSourcef(source, AL_GAIN, gain)
 
 
 def source_set_pitch(source: int, pitch: float) -> None:
     """Set the pitch of a source."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alSourcef(source, AL_PITCH, pitch)
 
 
 def source_set_looping(source: int, looping: bool) -> None:
     """Set whether the source loops automatically."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alSourcei(source, AL_LOOPING, 1 if looping else 0)
 
 
 def source_set_relative(source: int, relative: bool) -> None:
     """Set whether source coordinates are listener-relative."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alSourcei(source, AL_SOURCE_RELATIVE, 1 if relative else 0)
 
 
 def source_set_buffer(source: int, buffer: int) -> None:
     """Bind a buffer to a source."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         # AL_BUFFER is 0x1009
         _lib.alSourcei(source, 0x1009, buffer)
@@ -327,6 +396,8 @@ def source_set_distance_params(
     source: int, reference_dist: float, max_dist: float, rolloff: float
 ) -> None:
     """Set distance attenuation parameters on a source."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alSourcef(source, AL_REFERENCE_DISTANCE, reference_dist)
         _lib.alSourcef(source, AL_MAX_DISTANCE, max_dist)
@@ -335,12 +406,16 @@ def source_set_distance_params(
 
 def listener_set_position(position: tuple[float, float, float]) -> None:
     """Set the 3D position of the listener."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alListener3f(AL_POSITION, position[0], position[1], position[2])
 
 
 def listener_set_orientation(at: tuple[float, float, float], up: tuple[float, float, float]) -> None:
     """Set the orientation of the listener (at and up vectors)."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         vals = (ALfloat * 6)(at[0], at[1], at[2], up[0], up[1], up[2])
         _lib.alListenerfv(AL_ORIENTATION, vals)
@@ -348,6 +423,8 @@ def listener_set_orientation(at: tuple[float, float, float], up: tuple[float, fl
 
 def get_error() -> int:
     """Get the current OpenAL error code."""
+    if _fallback_mode:
+        return AL_NO_ERROR
     if _lib is not None:
         return int(_lib.alGetError())
     return AL_NO_ERROR
@@ -355,18 +432,24 @@ def get_error() -> int:
 
 def distance_model(model: int) -> None:
     """Set the distance attenuation model."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alDistanceModel(model)
 
 
 def doppler_factor(factor: float) -> None:
     """Set the global Doppler factor."""
+    if _fallback_mode:
+        return
     if _lib is not None:
         _lib.alDopplerFactor(factor)
 
 
 def source_get_state(source: int) -> int:
     """Get the play state of a source (e.g., AL_PLAYING, AL_STOPPED)."""
+    if _fallback_mode:
+        return _fake_source_states.get(source, AL_STOPPED)
     if _lib is not None:
         val = ALint(0)
         _lib.alGetSourcei(source, AL_SOURCE_STATE, ctypes.byref(val))
@@ -376,6 +459,11 @@ def source_get_state(source: int) -> int:
 
 def alc_get_string(device: Optional[int], param: int) -> str | None:
     """Gets an ALC string specifier."""
+    if _fallback_mode:
+        if param == ALC_DEFAULT_DEVICE_SPECIFIER:
+            return "EchoRunner Silent Fallback Device"
+        if param == ALC_DEVICE_SPECIFIER:
+            return "EchoRunner Silent Fallback Device"
     if _lib is None:
         return None
     res = _lib.alcGetString(device, param)
@@ -386,6 +474,13 @@ def alc_get_string(device: Optional[int], param: int) -> str | None:
 
 def al_get_string(param: int) -> str | None:
     """Gets an AL string specifier."""
+    if _fallback_mode:
+        if param == AL_VENDOR:
+            return "EchoRunner"
+        if param == AL_VERSION:
+            return "silent-fallback"
+        if param == AL_RENDERER:
+            return "No audio device available"
     if _lib is None:
         return None
     res = _lib.alGetString(param)
@@ -394,9 +489,11 @@ def al_get_string(param: int) -> str | None:
 
 def get_device_list(device: Optional[int]) -> list[str]:
     """Retrieves all available OpenAL playback devices specifiers."""
+    if _fallback_mode:
+        return ["EchoRunner Silent Fallback Device"]
     if _lib is None:
         return []
-    res_ptr = _lib.alcGetString(device, 0x1005)  # ALC_DEVICE_SPECIFIER
+    res_ptr = _lib.alcGetString(device, ALC_DEVICE_SPECIFIER)
     if not res_ptr:
         return []
 

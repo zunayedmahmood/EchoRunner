@@ -195,12 +195,15 @@ def main(argv: list[str] | None = None) -> int:
 
     app = EchoRunnerApp()
     
-    # Configure config file for trainer view if --trainer is passed
-    if args.trainer or args.dev:
-        # We can set dev_mode or config defaults
-        pass
-
     app.initialize(study=args.study, participant_id=args.participant, level_id=args.level)
+
+    # Start the sighted helper/developer mirror immediately when requested.
+    # Previously this flag was parsed but did not change runtime behavior.
+    if args.trainer or args.dev:
+        from echorunner.trainer_view.renderer import TrainerView
+        if app.trainer_view is None:
+            app.trainer_view = TrainerView(workspace_dir=app.workspace_dir)
+            app.trainer_view.start()
 
     if args.audio_test:
         if args.suite:

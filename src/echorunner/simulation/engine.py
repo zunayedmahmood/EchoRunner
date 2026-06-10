@@ -63,6 +63,7 @@ class GameSimulation:
         self.height = 0
         self.walkable_tiles: set[Vec2] = set()
         self.junctions: set[Vec2] = set()
+        self._path_cache: dict[tuple[Vec2, Vec2], int] = {}
 
         # Accessibility and UI variables
         self.low_stress_mode = False
@@ -273,15 +274,28 @@ class GameSimulation:
         return open_dirs
 
     def shortest_path(self, start: Vec2, end: Vec2) -> int:
-        """BFS helper computing path length between coordinates."""
+        """BFS helper computing path length between coordinates.
+
+        The level graph is static during play, so route lengths are cached. This
+        matters because enemy movement and threat classification call this many
+        times per second, especially with multiple enemy archetypes active.
+        """
         if start == end:
             return 0
+        key = (start, end)
+        reverse_key = (end, start)
+        if key in self._path_cache:
+            return self._path_cache[key]
+        if reverse_key in self._path_cache:
+            return self._path_cache[reverse_key]
+
         queue: deque[tuple[Vec2, int]] = deque([(start, 0)])
         visited = {start}
 
         while queue:
             curr, dist = queue.popleft()
             if curr == end:
+                self._path_cache[key] = dist
                 return dist
 
             directions = [Vec2(0, -1), Vec2(0, 1), Vec2(-1, 0), Vec2(1, 0)]
@@ -290,6 +304,7 @@ class GameSimulation:
                 if neighbor in self.walkable_tiles and neighbor not in visited:
                     visited.add(neighbor)
                     queue.append((neighbor, dist + 1))
+        self._path_cache[key] = 999
         return 999  # unreachable
 
     def line_of_sight(self, tile1: Vec2, tile2: Vec2) -> bool:

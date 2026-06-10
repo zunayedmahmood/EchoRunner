@@ -295,10 +295,35 @@ class OpenALBackend:
             )
             return
 
-        # Mono Fallback collapses panning coordinates (Section 17)
+        # Mono Fallback collapses panning coordinates (Section 17).
+        # Keep the historical behavior of updating the CueEvent, because the
+        # test suite uses that to verify mono coordinates are actually collapsed.
         if self.mono_mode and cue.spatial:
             cue.source_relative = True
             cue.position = (0.0, 0.0, 0.0)
+
+        # If this cue is already active, update its moving source instead of
+        # restarting it every frame. This prevents enemy alerts from clicking,
+        # reduces OpenAL calls, and keeps spatial tracking smooth.
+        for src, active_cue in list(self._source_to_cue.items()):
+            state = openal_ctypes.source_get_state(src)
+            if state not in (openal_ctypes.AL_PLAYING, openal_ctypes.AL_PAUSED):
+                self._source_to_cue.pop(src, None)
+                continue
+            if active_cue.cue_id == cue.cue_id:
+                openal_ctypes.source_set_gain(src, cue.gain)
+                openal_ctypes.source_set_pitch(src, cue.pitch)
+                openal_ctypes.source_set_looping(src, cue.loop)
+                openal_ctypes.source_set_relative(src, cue.source_relative)
+                pos = cue.position if cue.position is not None else (0.0, 0.0, 0.0)
+                openal_ctypes.source_set_position(src, pos)
+                if cue.spatial and not cue.source_relative:
+                    openal_ctypes.source_set_distance_params(src, 1.5, 12.0, 1.0)
+                else:
+                    openal_ctypes.source_set_distance_params(src, 1.0, 100.0, 0.0)
+                self._source_to_cue[src] = cue
+                self._apply_ducking()
+                return
 
         target_source: Optional[int] = None
 
@@ -349,7 +374,7 @@ class OpenALBackend:
                 )
             else:
                 openal_ctypes.source_set_distance_params(
-                    target_source, 0.0, 0.0, 0.0
+                    target_source, 1.0, 100.0, 0.0
                 )
 
             openal_ctypes.source_play(target_source)

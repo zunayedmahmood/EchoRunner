@@ -12,6 +12,7 @@ import yaml
 
 from echorunner.audio.openal_backend import CueEvent, OpenALBackend
 from echorunner.audio.speech import SpeechManager
+from echorunner.cues.planner import CuePlanner
 from echorunner.input.mapper import Command, InputMapper
 from echorunner.simulation.engine import GameSimulation, SimulationFrame
 from echorunner.simulation.enemy import Enemy
@@ -54,7 +55,7 @@ class EchoRunnerApp:
 
         # Determine runtime paths
         is_frozen = getattr(sys, "frozen", False) or hasattr(sys, "_MEIPASS")
-        is_dev = not is_frozen and (self.workspace_dir / "config").exists() and (self.workspace_dir / "assets").exists()
+        is_dev = not is_frozen and (self.workspace_dir / "config").exists() and (self.workspace_dir / "assetLibrary").exists()
         
         if is_dev:
             self.data_dir = self.workspace_dir / "data"
@@ -110,6 +111,15 @@ class EchoRunnerApp:
         self.input_mapper = InputMapper()
         self.trainer_view: TrainerView | None = None
         self.telemetry: TelemetryLogger | None = None
+        self.cue_planner = CuePlanner()
+
+        # UI mirror compatibility references
+        self.player = Player(Vec2(1, 1))
+        self.enemies: list[Enemy] = []
+        self.grid: list[str] = []
+        self.tutorial_module = 1
+        self.wall_hits = 0
+        self.command_queue: list[Command] = []
 
         # Menu navigation properties
         self.menu_items: list[str] = []
@@ -145,18 +155,10 @@ class EchoRunnerApp:
 
     @mono_mode.setter
     def mono_mode(self, value: bool) -> None:
+        """Toggle mono fallback without resetting gameplay or trainer-view state."""
         self._mono_mode = value
         if self.audio_backend:
             self.audio_backend.mono_mode = value
-
-        # UI mirror compatibility references
-        self.player = Player(Vec2(1, 1))
-        self.enemies: list[Enemy] = []
-        self.grid: list[str] = []
-
-        self.tutorial_module = 1
-        self.wall_hits = 0
-        self.command_queue: list[Command] = []
 
     def load_config(self) -> None:
         """Loads yaml configuration parameters."""
