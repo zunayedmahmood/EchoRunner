@@ -16,3 +16,5 @@
 {"t": 0.285, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}
 {"t": 0.285, "type": "state_transition", "from_state": "AUDIO_CHECK", "to_state": "AUDIO_CALIBRATION"}
 {"t": 0.286, "type": "state_transition", "from_state": "AUDIO_CALIBRATION", "to_state": "MAIN_MENU"}
+{"t": 0.0, "type": "session_start", "session_id": "P_2_2"}
+{"t": 0.312, "type": "state_transition", "from_state": "BOOT", "to_state": "AUDIO_CHECK"}

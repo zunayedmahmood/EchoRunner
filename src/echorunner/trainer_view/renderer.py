@@ -171,6 +171,11 @@ class TrainerView:
         last_scan_result: str = "none",
         telemetry_recording: bool = False,
         level_id: str = "none",
+        orbs: Optional[set] = None,
+        power_cores: Optional[set] = None,
+        menu_items: Optional[list[str]] = None,
+        menu_index: int = 0,
+        state_name: str = "PLAYING",
     ) -> None:
         """Renders the comprehensive trainer dashboard."""
         if not self.screen:
@@ -262,8 +267,19 @@ class TrainerView:
                             pygame.draw.rect(self.screen, (50, 50, 50), rect, 1)
 
                 # Draw collectibles
-                is_power = (char == "o")
-                is_pellet = (char == ".")
+                from echorunner.simulation.engine import Vec2
+                pos_vec = Vec2(x, y)
+                is_power = False
+                is_pellet = False
+                if orbs is not None:
+                    if pos_vec in orbs:
+                        if power_cores is not None and pos_vec in power_cores:
+                            is_power = True
+                        else:
+                            is_pellet = True
+                else:
+                    is_power = (char == "o")
+                    is_pellet = (char == ".")
 
                 if is_power:
                     if high_contrast:
@@ -478,6 +494,74 @@ class TrainerView:
                 # Draw the first line of instruction text wrapped at the very bottom
                 if lines:
                     self.screen.blit(self.font.render(f"Speech: \"{lines[0]}\"", True, (255, 255, 100)), (cx + 10, inst_y))
+
+        # Draw Menu Overlay if active
+        if menu_items:
+            overlay_rect = pygame.Rect(20, 70, 400, 400)
+            pygame.draw.rect(self.screen, (15, 15, 20), overlay_rect)
+            pygame.draw.rect(self.screen, border_color, overlay_rect, border_width)
+            
+            title_text = state_name.replace("_", " ").title()
+            title_surf = self.font_large.render(title_text, True, (255, 255, 100))
+            self.screen.blit(title_surf, (40, 90))
+            
+            start_y = 140
+            item_height = 28
+            for idx, item in enumerate(menu_items):
+                iy = start_y + idx * item_height
+                if iy + item_height > 450:
+                    break
+                
+                if idx == menu_index:
+                    bg_color = (0, 100, 200) if not high_contrast else (255, 255, 255)
+                    text_color = (255, 255, 255) if not high_contrast else (0, 0, 0)
+                    pygame.draw.rect(self.screen, bg_color, pygame.Rect(30, iy, 380, item_height - 2))
+                    ind_surf = self.font_bold.render(">", True, text_color)
+                    self.screen.blit(ind_surf, (40, iy + 4))
+                    item_surf = self.font_bold.render(item, True, text_color)
+                    self.screen.blit(item_surf, (60, iy + 4))
+                else:
+                    text_color = (180, 180, 180)
+                    item_surf = self.font.render(item, True, text_color)
+                    self.screen.blit(item_surf, (60, iy + 4))
+
+        # Draw status message overlays for non-gameplay states
+        elif state_name in ("AUDIO_CHECK", "AUDIO_CALIBRATION", "LIFE_LOST", "GAME_OVER", "LEVEL_CLEAR"):
+            overlay_rect = pygame.Rect(20, 70, 400, 400)
+            pygame.draw.rect(self.screen, (15, 15, 20), overlay_rect)
+            pygame.draw.rect(self.screen, border_color, overlay_rect, border_width)
+            
+            title_text = state_name.replace("_", " ").title()
+            title_surf = self.font_large.render(title_text, True, (255, 255, 100))
+            self.screen.blit(title_surf, (40, 90))
+            
+            info_text = ""
+            if state_name == "AUDIO_CHECK":
+                info_text = "Press ENTER to confirm audio works and start."
+            elif state_name == "AUDIO_CALIBRATION":
+                info_text = "Calibrating spatial audio..."
+            elif state_name == "LIFE_LOST":
+                info_text = "Press ENTER to respawn, or SPACE to replay death."
+            elif state_name == "GAME_OVER":
+                info_text = "Game Over. Press ENTER to return to main menu."
+            elif state_name == "LEVEL_CLEAR":
+                info_text = "Level Clear! Press ENTER to proceed."
+                
+            words = info_text.split(" ")
+            lines = []
+            curr_line = []
+            for w in words:
+                test_l = " ".join(curr_line + [w])
+                if self.font.size(test_l)[0] < 340:
+                    curr_line.append(w)
+                else:
+                    lines.append(" ".join(curr_line))
+                    curr_line = [w]
+            if curr_line:
+                lines.append(" ".join(curr_line))
+                
+            for idx, line in enumerate(lines):
+                self.screen.blit(self.font.render(line, True, (200, 200, 200)), (40, 150 + idx * 22))
 
         pygame.display.flip()
 

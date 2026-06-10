@@ -348,6 +348,7 @@ class EchoRunnerApp:
                 "Repeat controls",
                 "Audio calibration",
                 "Cue detail",
+                "Start Tutorial",
                 "Restart level",
                 "Quit to main menu",
             ]
@@ -658,6 +659,20 @@ class EchoRunnerApp:
             self.speech_manager.speak("first_launch")
         elif item == "High-Contrast Mode":
             self.speech_manager.speak("high_contrast")
+        elif item == "Hear walls":
+            self.speech_manager.speak("tutorial_walls")
+        elif item == "Turn at junctions":
+            self.speech_manager.speak("tutorial_junctions")
+        elif item == "Collect orbs":
+            self.speech_manager.speak("tutorial_orbs")
+        elif item == "Use short scan":
+            self.speech_manager.speak("tutorial_scan")
+        elif item == "Escape enemy":
+            self.speech_manager.speak("tutorial_enemy")
+        elif item == "Use resonance core":
+            self.speech_manager.speak("tutorial_power")
+        elif item == "Play real level":
+            self.speech_manager.speak("tutorial_real_level")
         else:
             logger.info(f"Voicing menu: {item}")
 
@@ -709,6 +724,8 @@ class EchoRunnerApp:
                 )
                 if self.speech_manager:
                     self.speech_manager.speak("settings_cue_density")
+            elif item == "Start Tutorial":
+                self.transition_to(AppState.TUTORIAL_MENU)
             elif item == "Restart level":
                 self.transition_to(AppState.PLAYING)
             elif item == "Quit to main menu":
@@ -1183,6 +1200,11 @@ class EchoRunnerApp:
                 last_scan_result=self.last_scan_result,
                 telemetry_recording=(self.telemetry is not None),
                 level_id=level_id,
+                orbs=self.simulation.orbs if self.simulation else None,
+                power_cores=self.simulation.power_cores if self.simulation else None,
+                menu_items=self.menu_items if self.state in (AppState.MAIN_MENU, AppState.TUTORIAL_MENU, AppState.PAUSED, AppState.SETTINGS) else None,
+                menu_index=self.menu_index,
+                state_name=self.state.name,
             )
 
     def shutdown(self) -> None:

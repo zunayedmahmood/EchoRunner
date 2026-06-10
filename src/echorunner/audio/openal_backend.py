@@ -287,6 +287,17 @@ class OpenALBackend:
                             f"Interrupting cue {active_cue.cue_id} due to high priority alert {cue.cue_id}"
                         )
 
+        # If this cue is speech and requests interruption, stop other playing speech cues
+        if cue.interrupt_speech:
+            for src, active_cue in list(self._source_to_cue.items()):
+                if active_cue.interrupt_speech and active_cue.cue_id != cue.cue_id:
+                    state = openal_ctypes.source_get_state(src)
+                    if state == openal_ctypes.AL_PLAYING:
+                        openal_ctypes.source_stop(src)
+                        logger.info(
+                            f"Interrupting speech cue {active_cue.cue_id} for new speech cue {cue.cue_id}"
+                        )
+
         # Resolve buffer
         buf_id = self.buffers.get(cue.file_id) or self.buffers.get(cue.cue_id)
         if not buf_id:
